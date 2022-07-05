@@ -1,0 +1,30 @@
+{
+  "name": "spaceden",
+  "version": "1.0.0",
+  "description": "An application for booking shelter depots in Mars for spacelanders who have to navigate through harsh weather.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.generalassemb.ly/skarim0196/Spaceden.git"
+  },
+  "keywords": [
+    "node",
+    "mongodb",
+    "express",
+    "mars",
+    "booking",
+    "crud",
+    "api",
+    "weather"
+  ],
+  "author": "Shadab",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.18"
+  }
+}
