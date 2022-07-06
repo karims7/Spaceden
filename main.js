@@ -3,31 +3,10 @@ const app = express();
 const bodyParser = require("body-parser");
 const path = require("path");
 const mongoose = require("mongoose");
-const cors = require("cors");
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const csrf = require("csurf");
 require("dotenv").config();
-
-// app.get("/depots", (req, res) => {
-//   let depotList = {};
-//   res.render("depots/index.ejs", depotList);
-// });
-
-// app.get(
-//   "id/:depotID/name/:name/region/:region/availability/:availability/price/:price",
-//   (req, res) => {
-//     let depotID = req.params.depotID;
-//     let name = req.params.depotID;
-//     let region = req.params.depotID;
-//     let availability = req.params.depotID;
-//     let price = req.params.depotID;
-//   }
-// );
-
-app.listen(3000, () => {
-  console.log("Connected");
-});
 
 // import necessary files
 const authRoutes = require("./routes/auth-routes");
@@ -36,9 +15,9 @@ const OrgAccount = require("./models/org");
 const isAuth = require("./middleware/is-auth");
 
 // set up the server
-const MONGODB_URL = process.env.MONGODB_URL || process.env.DB_CONNECTION;
+const MONGO = process.env.MONGO || process.env.DB_CONNECTION;
 
-const PORT = process.env.PORT || 5050;
+const PORT = process.env.PORT || 3000;
 
 const options = {
   useNewUrlParser: true,
@@ -47,7 +26,7 @@ const options = {
 };
 
 const store = new MongoDBStore({
-  uri: MONGODB_URL,
+  uri: MONGO,
   collection: "sessions",
 });
 
@@ -123,7 +102,7 @@ app.get("/", (req, res, next) => {
 
 // start the server and listen for requests
 mongoose
-  .connect(MONGODB_URL, options)
+  .connect(MONGO, options)
   .then((result) => {
     console.log(`Listening on ${PORT}`);
     app.listen(PORT);

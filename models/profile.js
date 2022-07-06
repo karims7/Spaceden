@@ -1,5 +1,5 @@
 /**
- * Contains a schema for a profile that can have an appointment schedule
+ * Contains a schema for a shelter depot that can have an appointment schedule
  */
 
 // import necessary libraries
