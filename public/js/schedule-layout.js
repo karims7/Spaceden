@@ -1,6 +1,6 @@
 /**
  * Contain the code to get the appointment schedule for each
- * profile and generate the html for them in an order manner
+ * shelter and generate the html for them in an order manner
  */
 
 // for each html element where class=schedule, we need to get that
@@ -86,7 +86,7 @@ function formatTimeString(date) {
   return hours + ":" + minutes + " " + amOrPm;
 }
 
-function generateHtml(appointment, profileId) {
+function generateHtml(appointment, shelterId) {
   /**
    * .name = name, String, MOBILE
    * .dayTme = starting day and time, Date object, MOBILE
@@ -141,7 +141,7 @@ function generateHtml(appointment, profileId) {
 
   // delete form
   const delForm = document.createElement("form");
-  delForm.action = "/schedule/delete/" + profileId + "/" + appointment._id;
+  delForm.action = "/schedule/delete/" + shelterId + "/" + appointment._id;
   delForm.method = "post";
 
   // delete button
@@ -207,13 +207,13 @@ function loadData(data) {
   // sort the data by time
   if (data.appointments.length > 0) {
     const sortedData = sortData(data);
-    profileId = data.profileId;
+    shelterId = data.shelterId;
 
     // get the div for the content
-    const sectionElem = document.getElementById(profileId);
+    const sectionElem = document.getElementById(shelterId);
 
     sortedData.forEach((item) => {
-      sectionElem.appendChild(generateHtml(item, profileId));
+      sectionElem.appendChild(generateHtml(item, shelterId));
     });
   } else {
     console.log("No data");

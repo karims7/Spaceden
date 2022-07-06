@@ -2,21 +2,21 @@
 // import necessary libraries
 
 // import necessary files
-const OrgAccount = require("../models/org");
-const Profile = require("../models/profile");
+const LanderAccount = require("../models/lander");
+const Shelter = require("../models/shelter");
 const Schedule = require("../models/schedule");
 
 // /schedule => GET
 exports.getSchedule = (req, res, next) => {
-  // get all profiles for this organization
-  Profile.find({ orgId: req.org._id })
-    .then((profiles) => {
-      // send all of the profiles to the template
+  // get all shelters for this landeranization
+  Shelter.find({ landerId: req.lander._id })
+    .then((shelters) => {
+      // send all of the shelters to the template
       res.render("schedule/schedule", {
         pageTitle: "Schedule",
-        orgName: req.org.name,
+        landerName: req.lander.name,
         isAuthenticated: req.session.isLoggedIn,
-        profiles: profiles,
+        shelters: shelters,
       });
     })
     .catch((err) => {
@@ -24,32 +24,32 @@ exports.getSchedule = (req, res, next) => {
     });
 };
 
-// //schedule/profile => GET
-exports.getProfile = (req, res, next) => {
-  // if we are editing an existing profile, we will
+// //schedule/shelter => GET
+exports.getShelter = (req, res, next) => {
+  // if we are editing an existing shelter, we will
   // need to search the db for the info.
   let editing = false;
 
   // autofill form data if we are in edit mode
   if (editing) {
-    res.render("schedule/profile", {
+    res.render("schedule/shelter", {
       editing: false,
-      profile: null,
+      shelter: null,
       isAuthenticated: req.session.isLoggedIn,
     });
     // leave form empty if we are not in edit mode
   } else {
-    res.render("schedule/profile", {
+    res.render("schedule/shelter", {
       editing: false,
-      profile: null,
+      shelter: null,
       isAuthenticated: req.session.isLoggedIn,
     });
   }
 };
 
-// /schedule/profile => POST
-// adding or editing a profile
-exports.postProfile = (req, res, next) => {
+// /schedule/shelter => POST
+// adding or editing a shelter
+exports.postShelter = (req, res, next) => {
   // get form data
   const fname = req.body.fname;
   const lname = req.body.lname;
@@ -64,7 +64,7 @@ exports.postProfile = (req, res, next) => {
     fri: req.body.Friday,
     sat: req.body.Saturday,
   };
-  const orgId = req.org._id;
+  const landerId = req.lander._id;
 
   for (var key of Object.keys(available)) {
     if (available[key] === undefined) {
@@ -72,8 +72,8 @@ exports.postProfile = (req, res, next) => {
     }
   }
 
-  // add the new profile to the database
-  const newProfile = new Profile({
+  // add the new shelter to the database
+  const newShelter = new Shelter({
     fname: fname,
     lname: lname,
     phone: phone,
@@ -89,15 +89,15 @@ exports.postProfile = (req, res, next) => {
       },
     },
     position: position,
-    orgId: orgId,
+    landerId: landerId,
   });
 
-  newProfile.save();
+  newShelter.save();
 
-  // create a new schedule to go with the profile
+  // create a new schedule to go with the shelter
   const newSchedule = new Schedule({
     schedule: { appointments: [] },
-    profileId: newProfile._id,
+    shelterId: newShelter._id,
   });
 
   newSchedule.save();
@@ -131,7 +131,7 @@ exports.postAppointment = (req, res, next) => {
   };
 
   // get the schedule model and save the appointment to the list of appointments
-  Schedule.findOne({ profileId: req.body.profile })
+  Schedule.findOne({ shelterId: req.body.shelter })
     .then((schedule) => {
       if (!schedule) {
         console.log("No matching schedule found");
@@ -148,11 +148,11 @@ exports.postAppointment = (req, res, next) => {
 
 // Respond with JSON object containing schedule for the day.
 exports.getScheduleData = (req, res, next) => {
-  const profileId = req.params.profileId;
+  const shelterId = req.params.shelterId;
   const newDate = new Date(req.params.date);
   const dateString = newDate.toLocaleDateString();
 
-  Schedule.findOne({ profileId: profileId })
+  Schedule.findOne({ shelterId: shelterId })
     .then((sch) => {
       // if no schedule was found
       if (!sch) {
@@ -167,15 +167,15 @@ exports.getScheduleData = (req, res, next) => {
 
       res
         .status(200)
-        .json({ appointments: filteredApnt, profileId: sch.profileId });
+        .json({ appointments: filteredApnt, shelterId: sch.shelterId });
     })
     .catch((err) => {
       console.log(err);
     });
 };
 
-exports.getEditProfile = (req, res, next) => {
-  // same as add profile but fill the input
+exports.getEditShelter = (req, res, next) => {
+  // same as add shelter but fill the input
   // elements with the existing values
   const editing = req.query.edit;
 
@@ -185,36 +185,36 @@ exports.getEditProfile = (req, res, next) => {
     return res.redirect("/schedule");
   }
 
-  const profileId = req.params.profileId;
+  const shelterId = req.params.shelterId;
 
-  // find the profile in the db
-  Profile.findById(profileId)
-    .then((profile) => {
-      // if the profile was not found
-      if (!profile) {
-        console.log("No profile found");
+  // find the shelter in the db
+  Shelter.findById(shelterId)
+    .then((shelter) => {
+      // if the shelter was not found
+      if (!shelter) {
+        console.log("No shelter found");
         return res.redirect("/schedule");
       }
 
-      // if the profile was found render the view with the old
-      // profile data
-      res.render("schedule/profile", {
+      // if the shelter was found render the view with the old
+      // shelter data
+      res.render("schedule/shelter", {
         editing: editing,
-        profile: profile,
+        shelter: shelter,
         isAuthenticated: req.session.isLoggedIn,
       });
     })
     .catch((err) => console.log(err));
 };
 
-exports.postEditProfile = (req, res, next) => {};
+exports.postEditShelter = (req, res, next) => {};
 
 exports.deleteAppointment = (req, res, next) => {
   // get parameters
-  const profileId = req.params.profileId;
+  const shelterId = req.params.shelterId;
   const schId = req.params.schId;
 
-  Schedule.findOne({ profileId: profileId })
+  Schedule.findOne({ shelterId: shelterId })
     .then((schedule) => {
       // if no schedule was found...
       if (!schedule) {

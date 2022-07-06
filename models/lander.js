@@ -24,4 +24,4 @@ const landerSchema = new Schema({
   resetTokenExpire: Date,
 });
 
-module.exports = mongoose.model("Lander", landerSchema);
+module.exports = mongoose.model("lander", landerSchema);

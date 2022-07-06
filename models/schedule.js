@@ -33,7 +33,7 @@ const scheduleSchema = new Schema({
       },
     ],
   },
-  profileId: {
+  shelterId: {
     type: Schema.Types.ObjectId,
     required: true,
   },

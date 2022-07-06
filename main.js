@@ -11,7 +11,7 @@ require("dotenv").config();
 // import necessary files
 const authRoutes = require("./routes/auth-routes");
 const schRoutes = require("./routes/schedule-routes");
-const OrgAccount = require("./models/org");
+const LanderAccount = require("./models/lander");
 const isAuth = require("./middleware/is-auth");
 
 // set up the server
@@ -64,16 +64,16 @@ app.use((req, res, next) => {
 });
 
 app.use((req, res, next) => {
-  if (!req.session.org) {
+  if (!req.session.lander) {
     return next();
   }
-  OrgAccount.findById(req.session.org._id)
-    .then((org) => {
+  LanderAccount.findById(req.session.lander._id)
+    .then((lander) => {
       // make sure we actually get a user
-      if (!org) {
+      if (!lander) {
         return next();
       }
-      req.org = org;
+      req.lander = lander;
       next();
     })
     .catch((err) => {

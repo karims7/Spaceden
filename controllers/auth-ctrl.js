@@ -2,7 +2,7 @@
 const bcrypt = require("bcrypt");
 
 // import necessay files
-const OrgAccount = require("../models/org");
+const LanderAccount = require("../models/lander");
 
 // /login => GET
 exports.getLogin = (req, res, next) => {
@@ -14,25 +14,25 @@ exports.getLogin = (req, res, next) => {
 
 // /login => POST
 exports.postLogin = (req, res, next) => {
-  const orgId = req.body.orgId;
+  const landerId = req.body.landerId;
   const pass = req.body.password;
 
-  //   find the org account
-  OrgAccount.findOne({ orgId: orgId })
-    .then((org) => {
-      //   if no organization with that id was found, redirect to /login
-      if (!org) {
-        console.log("No organization with that id found");
+  //   find the lander account
+  LanderAccount.findOne({ landerId: landerId })
+    .then((lander) => {
+      //   if no landeranization with that id was found, redirect to /login
+      if (!lander) {
+        console.log("No landeranization with that id found");
         return res.redirect("/login");
       }
       // compare the password if the stored password
       bcrypt
-        .compare(pass, org.password)
+        .compare(pass, lander.password)
         .then((isMatch) => {
           // if the passwords match, set up the session
           if (isMatch) {
             req.session.isLoggedIn = true;
-            req.session.org = org;
+            req.session.lander = lander;
             return req.session.save((err) => {
               console.log(err);
               // if the user is successfully authenticated,
@@ -66,12 +66,12 @@ exports.getRegister = (req, res, next) => {
 // /register => POST
 exports.postRegister = (req, res, next) => {
   //   get form data
-  const orgName = req.body.name;
-  const orgId = req.body.orgId;
+  const landerName = req.body.name;
+  const landerId = req.body.landerId;
   const pass = req.body.password;
   const confirmPass = req.body.confirmPassword;
 
-  // create a new organization account only if the passwords match
+  // create a new landeranization account only if the passwords match
   if (pass !== confirmPass) {
     console.log("Unable to create account.");
     return res.redirect("/register");
@@ -82,12 +82,12 @@ exports.postRegister = (req, res, next) => {
     .hash(pass, 12)
     .then((result) => {
       // create new account with the hashed password
-      const org = new OrgAccount({
-        name: orgName,
-        orgId: orgId,
+      const lander = new LanderAccount({
+        name: landerName,
+        landerId: landerId,
         password: result,
       });
-      return org.save();
+      return lander.save();
     })
     .then((result) => {
       return res.redirect("/login");

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/normalize.css" />
     <link rel="stylesheet" href="/main/styles.css" />
     <link rel="stylesheet" href="/forms/forms.css" />
-    <link rel="stylesheet" href="/schedule/profiles.css" />
+    <link rel="stylesheet" href="/schedule/shelters.css" />
     <script src="/js/schedule-layout.js" defer></script>
     <title><%= pageTitle %></title>
   </head>
@@ -15,35 +15,35 @@
     <header><%- include('../includes/nav.ejs') %></header>
     <main>
       <div id="content">
-        <h1><%= orgName %></h1>
+        <h1><%= landerName %></h1>
         <div id="date-container">
           <input type="date" name="date-select" id="date-select" />
           <button id="date-btn">View Day</button>
         </div>
         <div id="layout">
-          <% if (profiles.length != 0) { %>
-          <div id="day-profile-view">
-            <% for (const profile of profiles) { %>
-            <div class="profile-container">
-              <h3><%= profile.fname %> <%= profile.lname %></h3>
+          <% if (shelters.length != 0) { %>
+          <div id="day-shelter-view">
+            <% for (const shelter of shelters) { %>
+            <div class="shelter-container">
+              <h3><%= shelter.fname %> <%= shelter.lname %></h3>
               <section>
                 <p class="phone-p">
                   Phone:
-                  <a href="tel:<%= profile.phone %> "><%= profile.phone %></a>
+                  <a href="tel:<%= shelter.phone %> "><%= shelter.phone %></a>
                 </p>
-                <p>Position: <%= profile.position %></p>
+                <p>Position: <%= shelter.position %></p>
                 <a
                   class="btn"
-                  href="/schedule/profile/<%= profile._id %>?edit=true"
-                  >Edit Profile</a
+                  href="/schedule/shelter/<%= shelter._id %>?edit=true"
+                  >Edit Shelter</a
                 >
               </section>
-              <div class="schedule" id="<%= profile._id %>"></div>
+              <div class="schedule" id="<%= shelter._id %>"></div>
             </div>
             <% } %>
           </div>
           <% } else { %>
-          <a href="/schedule/profile">Create Profile</a>
+          <a href="/schedule/shelter">Create Shelter</a>
           <% } %>
         </div>
         <div class="form-container">
@@ -73,11 +73,11 @@
               <input type="tel" name="phone" id="phone" required />
             </div>
             <div class="form-control">
-              <label for="profile">Interviewer</label>
-              <select name="profile" id="profile-select" required>
-                <% for (const profile of profiles) { %>
-                <option value="<%= profile._id %>">
-                  <%= profile.fname %> <%= profile.lname %>
+              <label for="shelter">Interviewer</label>
+              <select name="shelter" id="shelter-select" required>
+                <% for (const shelter of shelters) { %>
+                <option value="<%= shelter._id %>">
+                  <%= shelter.fname %> <%= shelter.lname %>
                 </option>
                 <% } %>
               </select>

@@ -10,20 +10,20 @@ const router = express.Router();
 
 // routing for all /schedule requests
 
-router.get("/profile/:profileId", schCtrl.getEditProfile);
+router.get("/shelter/:shelterId", schCtrl.getEditShelter);
 
-// /schedule/profile => GET
-router.get("/profile", schCtrl.getProfile);
+// /schedule/shelter => GET
+router.get("/shelter", schCtrl.getShelter);
 
-// /schedule/profile => POST
-router.post("/profile", schCtrl.postProfile);
+// /schedule/shelter => POST
+router.post("/shelter", schCtrl.postShelter);
 
 // /schedule/add-appointment => POST
 router.post("/add-appointment", schCtrl.postAppointment);
 
-router.get("/load/:profileId/:date", schCtrl.getScheduleData);
+router.get("/load/:shelterId/:date", schCtrl.getScheduleData);
 
-router.post("/delete/:profileId/:schId", schCtrl.deleteAppointment);
+router.post("/delete/:shelterId/:schId", schCtrl.deleteAppointment);
 
 // /schedule => GET
 router.get("/", schCtrl.getSchedule);

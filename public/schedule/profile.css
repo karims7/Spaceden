@@ -1,8 +1,8 @@
-body #day-profile-view {
+body #day-shelter-view {
   display: block;
 }
 
-body #day-profile-view .profile-container {
+body #day-shelter-view .shelter-container {
   max-width: 100%;
   margin: 20px auto;
   background-color: #a7a2a9;
@@ -11,23 +11,23 @@ body #day-profile-view .profile-container {
   border-radius: 10px;
 }
 
-body #day-profile-view .profile-container h3 {
+body #day-shelter-view .shelter-container h3 {
   text-align: center;
 }
 
-body #day-profile-view .profile-container section {
+body #day-shelter-view .shelter-container section {
   margin-bottom: 18px;
   font-weight: bold;
 }
 
-body #day-profile-view .profile-container section a,
-body #day-profile-view .profile-container section a:visited,
-body #day-profile-view .profile-container section a:link {
+body #day-shelter-view .shelter-container section a,
+body #day-shelter-view .shelter-container section a:visited,
+body #day-shelter-view .shelter-container section a:link {
   text-decoration: none;
   color: #4124ee;
 }
 
-body #day-profile-view .profile-container .schedule .appointment {
+body #day-shelter-view .shelter-container .schedule .appointment {
   background-color: #f4f7f5;
   border: 1px solid #222823;
   border-left: 4px solid #00978d;
@@ -43,28 +43,28 @@ body #day-profile-view .profile-container .schedule .appointment {
   padding-bottom: 5px;
 }
 
-body #day-profile-view .profile-container .schedule .appointment .apt-duration,
-body #day-profile-view .profile-container .schedule .appointment .apt-phone1,
-body #day-profile-view .profile-container .schedule .appointment .apt-delete,
-body #day-profile-view .profile-container .schedule .appointment .reason {
+body #day-shelter-view .shelter-container .schedule .appointment .apt-duration,
+body #day-shelter-view .shelter-container .schedule .appointment .apt-phone1,
+body #day-shelter-view .shelter-container .schedule .appointment .apt-delete,
+body #day-shelter-view .shelter-container .schedule .appointment .reason {
   display: none;
 }
 
-body #day-profile-view .profile-container .schedule .appointment .reason {
+body #day-shelter-view .shelter-container .schedule .appointment .reason {
   -ms-grid-column: 1;
   -ms-grid-column-span: 3;
   grid-column: 1/4;
 }
 
 @media screen and (min-width: 640px) {
-  body #day-profile-view .profile-container {
+  body #day-shelter-view .shelter-container {
     max-width: 70%;
   }
-  body #day-profile-view .profile-container section {
+  body #day-shelter-view .shelter-container section {
     text-align: center;
   }
-  body #day-profile-view .profile-container .schedule .appointment {
+  body #day-shelter-view .shelter-container .schedule .appointment {
     padding: 5px;
   }
 }
-/*# sourceMappingURL=profiles.css.map */
+/*# sourceMappingURL=shelters.css.map */

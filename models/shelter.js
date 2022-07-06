@@ -6,7 +6,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const profileSchema = new Schema({
+const shelterSchema = new Schema({
   fname: {
     type: String,
     reqired: true,
@@ -55,10 +55,10 @@ const profileSchema = new Schema({
     type: String,
     required: false,
   },
-  orgId: {
+  landerId: {
     type: Schema.Types.ObjectId,
     required: true,
   },
 });
 
-module.exports = mongoose.model("Profile", profileSchema);
+module.exports = mongoose.model("Shelter", shelterSchema);
