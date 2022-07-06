@@ -95,7 +95,7 @@ app.use(authRoutes);
 app.get("/", (req, res, next) => {
   res.render("home", {
     pageTitle: "Home",
-    msg: "Welcome to the Scheduling App!",
+    msg: "Spaceden",
     isAuthenticated: req.session.isLoggedIn,
   });
 });

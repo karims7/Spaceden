@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/normalize.css" />
-    <link rel="stylesheet" href="/main/styles.css" />
+    <link rel="stylesheet" href="/main/style.css" />
     <link rel="stylesheet" href="/forms/forms.css" />
-    <link rel="stylesheet" href="/schedule/shelters.css" />
+    <link rel="stylesheet" href="/schedule/shelter.css" />
     <script src="/js/schedule-layout.js" defer></script>
     <title><%= pageTitle %></title>
   </head>
@@ -25,7 +25,7 @@
           <div id="day-shelter-view">
             <% for (const shelter of shelters) { %>
             <div class="shelter-container">
-              <h3><%= shelter.fname %> <%= shelter.lname %></h3>
+              <h3><%= shelter.regionName %> <%= shelter.depotType %></h3>
               <section>
                 <p class="phone-p">
                   Phone:
@@ -77,7 +77,7 @@
               <select name="shelter" id="shelter-select" required>
                 <% for (const shelter of shelters) { %>
                 <option value="<%= shelter._id %>">
-                  <%= shelter.fname %> <%= shelter.lname %>
+                  <%= shelter.regionName %> <%= shelter.depotType %>
                 </option>
                 <% } %>
               </select>

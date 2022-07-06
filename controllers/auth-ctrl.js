@@ -20,9 +20,10 @@ exports.postLogin = (req, res, next) => {
   //   find the lander account
   LanderAccount.findOne({ landerId: landerId })
     .then((lander) => {
-      //   if no landeranization with that id was found, redirect to /login
+      //   if no lander with that id was found, redirect to /login
       if (!lander) {
-        console.log("No landeranization with that id found");
+        alert("No spacelander with that id found");
+        console.log("No lander with that id found");
         return res.redirect("/login");
       }
       // compare the password if the stored password
@@ -71,7 +72,7 @@ exports.postRegister = (req, res, next) => {
   const pass = req.body.password;
   const confirmPass = req.body.confirmPassword;
 
-  // create a new landeranization account only if the passwords match
+  // create a new lander account only if the passwords match
   if (pass !== confirmPass) {
     console.log("Unable to create account.");
     return res.redirect("/register");

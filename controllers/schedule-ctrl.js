@@ -8,7 +8,7 @@ const Schedule = require("../models/schedule");
 
 // /schedule => GET
 exports.getSchedule = (req, res, next) => {
-  // get all shelters for this landeranization
+  // get all shelters for this lander
   Shelter.find({ landerId: req.lander._id })
     .then((shelters) => {
       // send all of the shelters to the template
@@ -51,8 +51,8 @@ exports.getShelter = (req, res, next) => {
 // adding or editing a shelter
 exports.postShelter = (req, res, next) => {
   // get form data
-  const fname = req.body.fname;
-  const lname = req.body.lname;
+  const regionName = req.body.regionName;
+  const depotType = req.body.depotType;
   const phone = req.body.phone;
   const position = req.body.position;
   const available = {
@@ -74,8 +74,8 @@ exports.postShelter = (req, res, next) => {
 
   // add the new shelter to the database
   const newShelter = new Shelter({
-    fname: fname,
-    lname: lname,
+    regionName: regionName,
+    depotType: depotType,
     phone: phone,
     availability: {
       days: {

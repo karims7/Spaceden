@@ -7,11 +7,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const shelterSchema = new Schema({
-  fname: {
+  regionName: {
     type: String,
     reqired: true,
   },
-  lname: {
+  depotType: {
     type: String,
     reqired: true,
   },

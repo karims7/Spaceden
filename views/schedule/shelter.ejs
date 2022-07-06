@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/normalize.css" />
-    <link rel="stylesheet" href="/main/styles.css" />
+    <link rel="stylesheet" href="/main/style.css" />
     <link rel="stylesheet" href="/forms/forms.css" />
     <title>Add/Edit Shelter</title>
   </head>
@@ -20,21 +20,21 @@
             autocomplete="off"
           >
             <div class="form-control">
-              <label for="fname">First Name</label>
+              <label for="regionName">Region Name</label>
               <input
                 type="text"
-                name="fname"
-                id="fname"
-                value="<% if (editing) { %><%= shelter.fname %><% } %>"
+                name="regionName"
+                id="regionName"
+                value="<% if (editing) { %><%= shelter.regionName %><% } %>"
               />
             </div>
             <div class="form-control">
-              <label for="lname">Last Name</label>
+              <label for="depotType">Depot Type</label>
               <input
                 type="text"
-                name="lname"
-                id="lname"
-                value="<% if (editing) { %><%= shelter.lname %><% } %>"
+                name="depotType"
+                id="depotType"
+                value="<% if (editing) { %><%= shelter.depotType %><% } %>"
               />
             </div>
             <div class="form-control">
