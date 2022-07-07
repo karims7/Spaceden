@@ -175,7 +175,7 @@ exports.getScheduleData = (req, res, next) => {
 };
 
 exports.getEditShelter = (req, res, next) => {
-  // same as add shelter but fill the input
+  // same as book shelter but fill the input
   // elements with the existing values
   const editing = req.query.edit;
 
