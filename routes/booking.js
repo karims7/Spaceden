@@ -3,7 +3,7 @@
 const express = require("express");
 
 // import necessary files
-const schCtrl = require("../controllers/schedule-ctrl");
+const schCtrl = require("../controllers/booking");
 
 // handle HTTP requests
 const router = express.Router();

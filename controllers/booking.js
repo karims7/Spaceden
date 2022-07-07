@@ -4,7 +4,7 @@
 // import necessary files
 const LanderAccount = require("../models/lander");
 const Shelter = require("../models/shelter");
-const Schedule = require("../models/schedule");
+const Schedule = require("../models/booking");
 
 // /schedule => GET
 exports.getSchedule = (req, res, next) => {

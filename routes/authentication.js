@@ -2,7 +2,7 @@
 const express = require("express");
 
 // import necessary files
-const authCtrl = require("../controllers/auth-ctrl");
+const authCtrl = require("../controllers/authentication");
 
 // handle HTTP requests
 const router = express.Router();

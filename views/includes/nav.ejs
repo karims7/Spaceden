@@ -1,9 +1,27 @@
 <nav>
+  <script
+    type="text/javascript"
+    src="https://studio.alan.app/web/lib/alan_lib.min.js"
+  ></script>
+  <script>
+    var alanBtnInstance = alanBtn({
+      key: "5e46b511f2ab26e9cb05ce65038d939f2e956eca572e1d8b807a3e2338fdd0dc/stage",
+      onCommand: function (commandData) {
+        if (commandData.command === "go:back") {
+          //call client code that will react on the received command
+        }
+      },
+      rootEl: document.getElementById("alan-btn"),
+    });
+  </script>
   <ul>
+    <li>
+      <div class="alan-btn"></div>
+    </li>
     <% if (!isAuthenticated) { %>
     <li><a class="nav-btn" href="/login">Login</a></li>
     <li><a class="nav-btn" href="/register">Register</a></li>
-    <li><div class="alan-btn"></div></li>
+
     <% } else { %>
     <li><a class="nav-btn" href="/schedule">Schedule</a></li>
     <li>
@@ -15,6 +33,7 @@
         <button class="nav-btn" type="submit">Logout</button>
       </form>
     </li>
+
     <% } %>
   </ul>
 </nav>

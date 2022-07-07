@@ -6,13 +6,20 @@ const mongoose = require("mongoose");
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const csrf = require("csurf");
+const fetch = require("node-fetch");
+const user = require("./middleware/user");
+const login = require("./middleware/login");
+const cT = require("./middleware/cT");
 require("dotenv").config();
+const api_url =
+  "https://api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0";
 
 // import necessary files
-const authRoutes = require("./routes/auth-routes");
-const schRoutes = require("./routes/schedule-routes");
+const authRoutes = require("./routes/authentication");
+const schRoutes = require("./routes/booking");
 const LanderAccount = require("./models/lander");
-const isAuth = require("./middleware/is-auth");
+const isAuth = require("./middleware/authenticated");
+const { response } = require("express");
 
 // set up the server
 const MONGO = process.env.MONGO || process.env.DB_CONNECTION;
@@ -53,44 +60,12 @@ app.use(
   })
 );
 
-// set up csrf protection
 app.use(csrfProtection);
-
-// server variables
-app.use((req, res, next) => {
-  res.locals.isAuth = req.session.isLoggedIn;
-  res.locals.csrfToken = req.csrfToken();
-  next();
-});
-
-app.use((req, res, next) => {
-  if (!req.session.lander) {
-    return next();
-  }
-  LanderAccount.findById(req.session.lander._id)
-    .then((lander) => {
-      // make sure we actually get a user
-      if (!lander) {
-        return next();
-      }
-      req.lander = lander;
-      next();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-
-// set up headers
-// app.use((req, res, next) => {
-//   res.setHeader('Access-Control-Allow-Origin', '*');
-//   res.setHeader('Access-Control-Allow-Methods', 'GET');
-//   next();
-// });
-
-// set up routes
+app.use(cT);
+app.use(user);
 app.use("/schedule", isAuth, schRoutes);
 app.use(authRoutes);
+app.use(login);
 
 app.get("/", (req, res, next) => {
   res.render("home", {
@@ -110,3 +85,19 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+
+// app.get("/weather", async (req, res) => {
+//   const weatherResponse = await fetch(api_url);
+//   const weatherJson = await weatherResponse.json();
+//   console.log(weatherJson);
+// });
+
+const getWeather = () => {
+  fetch(api_url)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+    });
+};
+
+getWeather();
