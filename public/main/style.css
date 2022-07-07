@@ -1,10 +1,18 @@
 body {
-  background-color: #f4f7f5;
+  background-color: rgb(60, 60, 60);
   width: 100%;
+  font-family: "Orbitron", times;
 }
 
 body header {
-  background-color: #00978d;
+  background: rgb(253, 166, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(253, 166, 0, 1) 25%,
+    rgba(231, 125, 17, 1) 50%,
+    rgba(193, 68, 14, 1) 75%,
+    rgba(69, 24, 4, 1) 100%
+  );
   color: #f4f7f5;
 }
 
@@ -30,20 +38,38 @@ body header nav ul button.nav-btn {
   font-size: 1.1em;
   text-align: center;
   text-decoration: none;
-  background-color: #00978d;
+  background: transparent;
   color: #f4f7f5;
   border: 1px solid #f4f7f5;
   border-radius: 5px;
   padding: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 body header nav ul .nav-btn:hover {
-  background-color: #f4f7f5;
-  color: #00978d;
-  border-color: #00978d;
+  background-color: transparent;
+  border-color: white;
+  width: 100px;
+  height: 25px;
+  padding: 10px;
 }
 
 body main #content {
-  font-family: "Orbitron", sans-serif;
+  margin: 40px 15px;
 }
+
+.title {
+  font-family: "Orbitron", times;
+  font-size: 90px;
+  color: white;
+}
+.title-div {
+  text-align: center;
+}
+
+label {
+  color: white;
+}
+
 /*# sourceMappingURL=styles.css.map */

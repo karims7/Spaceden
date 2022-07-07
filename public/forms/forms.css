@@ -36,12 +36,13 @@ body main .form-container form .btn {
 
 body main .form-container form a.btn {
   text-decoration: none;
-  color: black;
+  color: white;
   border: 1px solid #858585;
   border-radius: 2px;
 }
 
 body main .form-container form a.btn:hover {
-  background-color: #dddddd;
+  background-color: rgb(253, 166, 0);
 }
+
 /*# sourceMappingURL=forms.css.map */

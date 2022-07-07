@@ -39,7 +39,7 @@ const scheduleSchema = new Schema({
   },
 });
 
-// add appointment method
+// add booking method
 scheduleSchema.methods.addAppointment = function (appointment) {
   // if we editing an appointment, we should find it in the list of appointments already
   const updatedAppointments = [...this.schedule.appointments];

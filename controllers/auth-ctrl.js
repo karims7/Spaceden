@@ -22,7 +22,6 @@ exports.postLogin = (req, res, next) => {
     .then((lander) => {
       //   if no lander with that id was found, redirect to /login
       if (!lander) {
-        alert("No spacelander with that id found");
         console.log("No lander with that id found");
         return res.redirect("/login");
       }
