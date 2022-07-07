@@ -4,8 +4,7 @@
   "description": "An application for booking shelter depots in Mars for spacelanders who have to navigate through harsh weather.",
   "main": "main.js",
   "scripts": {
-    "start": "node main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node main.js"
   },
   "repository": {
     "type": "git",

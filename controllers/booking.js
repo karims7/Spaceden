@@ -12,8 +12,8 @@ exports.getSchedule = (req, res, next) => {
   Shelter.find({ landerId: req.lander._id })
     .then((shelters) => {
       // send all of the shelters to the template
-      res.render("schedule/schedule", {
-        pageTitle: "Schedule",
+      res.render("schedule/booking", {
+        pageTitle: "Booking",
         landerName: req.lander.name,
         isAuthenticated: req.session.isLoggedIn,
         shelters: shelters,

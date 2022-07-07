@@ -51,9 +51,14 @@ body header nav ul .nav-btn:hover {
   background-color: transparent;
   border-color: white;
   width: 100px;
-  height: 25px;
-  padding: 10px;
+  height: 50px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
+
+/* .book-shelter-btn:hover {
+  height: 30px;
+} */
 
 body main #content {
   margin: 40px 15px;

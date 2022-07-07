@@ -1,3 +1,4 @@
+const LanderAccount = require("../models/lander");
 module.exports = (req, res, next) => {
   if (!req.session.lander) {
     return next();

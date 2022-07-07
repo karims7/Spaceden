@@ -5,3 +5,5 @@ module.exports = (req, res, next) => {
     isAuthenticated: req.session.isLoggedIn,
   });
 };
+
+//render home page
