@@ -6,18 +6,14 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const shelterSchema = new Schema({
+const newShelterSchema = new Schema({
   regionName: {
     type: String,
     reqired: true,
   },
-  depotType: {
+  name: {
     type: String,
     reqired: true,
-  },
-  phone: {
-    type: String,
-    required: true,
   },
   availability: {
     days: {
@@ -35,30 +31,22 @@ const shelterSchema = new Schema({
       },
       wed: {
         type: Boolean,
+
         required: true,
       },
-      thu: {
-        type: Boolean,
-        required: true,
-      },
-      fri: {
-        type: Boolean,
-        required: true,
-      },
-      sat: {
-        type: Boolean,
-        required: true,
-      },
+      //   thu: {
+      //     type: Boolean,
+      //     required: true,
+      //   },
+      //   fri: {
+      //     type: Boolean,
+      //     required: true,
+      //   },
+      //   sat: {
+      //     type: Boolean,
+      //     required: true,
     },
   },
-  position: {
-    type: String,
-    required: false,
-  },
-  // landerId: {
-  //   type: Schema.Types.ObjectId,
-  //   required: true,
-  // },
 });
 
-module.exports = mongoose.model("Shelter", shelterSchema);
+module.exports = mongoose.model("newShelters", newShelterSchema);
