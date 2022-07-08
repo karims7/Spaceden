@@ -2,6 +2,7 @@ body {
   background-color: rgb(60, 60, 60);
   width: 100%;
   font-family: "Orbitron", times;
+  background-image: url("https://wallpaperaccess.com/full/1608.jpg");
 }
 
 body header {
@@ -66,8 +67,9 @@ body main #content {
 
 .title {
   font-family: "Orbitron", times;
-  font-size: 90px;
+  font-size: 200px;
   color: white;
+  padding: 100px;
 }
 .title-div {
   text-align: center;

@@ -10,8 +10,9 @@ const fetch = require("node-fetch");
 const user = require("./middleware/user");
 const login = require("./middleware/login");
 const cT = require("./middleware/cT");
+let MarsInsightWeather = require("mars-insight-weather-node");
 require("dotenv").config();
-const api_url =
+const API_URL =
   "https://api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0";
 
 // import necessary files
@@ -92,8 +93,38 @@ mongoose
 //   console.log(weatherJson);
 // });
 
+// const getWeather = () => {
+//   fetch(API_URL)
+//     .then((res) => res.json())
+//     .then((data) => {
+//       const { sol_keys, validity_checks, ...solData } = data;
+//       const weatherVar = Object.entries(solData).map(([sol, data]) => {
+//         return {
+//           sol: sol,
+//           maxTemp: data.AT.mx,
+//           minTemp: data.AT.mn,
+//           windSpeed: data.HWS.av,
+//           windDirectionDegrees: data.WD.most_common.compass_degrees,
+//           windDirectionCardinal: data.WD.most_common.compass_point,
+//           date: new Date(data.First_UTC),
+//         };
+//       });
+//       console.log(weatherVar);
+//     });
+// };
+
+// getWeather();
+
+// let marsweather = new MarsInsightWeather("C", "bar", "km/h");
+
+// marsweather.request(function (err, response) {
+//   console.log("Temperature ", this.getLatestSol().AT.av);
+//   console.log("Pressure ", this.getLatestSol().PRE.av);
+//   console.log("Wind speed ", this.getLatestSol().HWS.av);
+// });
+
 const getWeather = () => {
-  fetch(api_url)
+  fetch(API_URL)
     .then((res) => res.json())
     .then((data) => {
       console.log(data);

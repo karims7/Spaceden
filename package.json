@@ -32,6 +32,7 @@
     "ejs": "^3.1.8",
     "express": "^4.18.1",
     "express-session": "^1.17.3",
+    "mars-insight-weather-node": "^0.6.0",
     "mongoose": "^6.4.3",
     "node-fetch": "^2.6.1",
     "nodemon": "^2.0.18"

@@ -70,6 +70,7 @@ exports.postRegister = (req, res, next) => {
   const landerId = req.body.landerId;
   const pass = req.body.password;
   const confirmPass = req.body.confirmPassword;
+  // const landerPosition: req.body.landerPosition;
 
   // create a new lander account only if the passwords match
   if (pass !== confirmPass) {

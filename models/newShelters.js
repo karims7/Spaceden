@@ -34,17 +34,18 @@ const newShelterSchema = new Schema({
 
         required: true,
       },
-      //   thu: {
-      //     type: Boolean,
-      //     required: true,
-      //   },
-      //   fri: {
-      //     type: Boolean,
-      //     required: true,
-      //   },
-      //   sat: {
-      //     type: Boolean,
-      //     required: true,
+      thu: {
+        type: Boolean,
+        required: true,
+      },
+      fri: {
+        type: Boolean,
+        required: true,
+      },
+      sat: {
+        type: Boolean,
+        required: true,
+      },
     },
   },
 });

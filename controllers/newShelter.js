@@ -3,7 +3,7 @@
 
 // import necessary files
 const LanderAccount = require("../models/lander");
-const Shelter = require("../models/shelter");
+const Shelter = require("../models/newShelters");
 const Schedule = require("../models/booking");
 
 // /schedule => GET
@@ -35,14 +35,12 @@ exports.getShelter = (req, res, next) => {
     res.render("schedule/shelter", {
       editing: false,
       shelter: null,
-      isAuthenticated: req.session.isLoggedIn,
     });
     // leave form empty if we are not in edit mode
   } else {
     res.render("schedule/shelter", {
       editing: false,
       shelter: null,
-      isAuthenticated: req.session.isLoggedIn,
     });
   }
 };
@@ -52,9 +50,7 @@ exports.getShelter = (req, res, next) => {
 exports.postShelter = (req, res, next) => {
   // get form data
   const regionName = req.body.regionName;
-  const depotType = req.body.depotType;
-  const phone = req.body.phone;
-  const position = req.body.position;
+  const name = req.body.name;
   const available = {
     sun: req.body.Sunday,
     mon: req.body.Monday,
@@ -64,7 +60,7 @@ exports.postShelter = (req, res, next) => {
     fri: req.body.Friday,
     sat: req.body.Saturday,
   };
-  const landerId = req.lander._id;
+  //   const landerId = req.lander._id;
 
   for (var key of Object.keys(available)) {
     if (available[key] === undefined) {
@@ -75,8 +71,7 @@ exports.postShelter = (req, res, next) => {
   // add the new shelter to the database
   const newShelter = new Shelter({
     regionName: regionName,
-    depotType: depotType,
-    phone: phone,
+    name: name,
     availability: {
       days: {
         sun: available.sun,
@@ -88,8 +83,6 @@ exports.postShelter = (req, res, next) => {
         sat: available.sat,
       },
     },
-    position: position,
-    landerId: landerId,
   });
 
   newShelter.save();
