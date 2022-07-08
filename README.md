@@ -8,4 +8,4 @@ Imagine a planet very much like the Earth, with similar size, rotation rate and 
 
 ![dust storms](https://scx2.b-cdn.net/gfx/news/2019/duststormson.jpg)
 
-![screenshot 1] (./images/1.jpg)
+![screenshot 1](./images/1.jpg)
