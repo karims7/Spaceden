@@ -55,10 +55,10 @@ const shelterSchema = new Schema({
     type: String,
     required: false,
   },
-  landerId: {
-    type: Schema.Types.ObjectId,
-    required: true,
-  },
+  // landerId: {
+  //   type: Schema.Types.ObjectId,
+  //   required: true,
+  // },
 });
 
 module.exports = mongoose.model("Shelter", shelterSchema);

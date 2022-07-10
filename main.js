@@ -12,8 +12,7 @@ const login = require("./middleware/login");
 const cT = require("./middleware/cT");
 let MarsInsightWeather = require("mars-insight-weather-node");
 require("dotenv").config();
-const API_URL =
-  "https://api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0";
+const API_URL = `https://api.nasa.gov/insight_weather/?api_key=${process.env.API_KEY}&feedtype=json&ver=1.0`;
 
 // import necessary files
 const authRoutes = require("./routes/authentication");
@@ -127,7 +126,8 @@ const getWeather = () => {
   fetch(API_URL)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      console.log(data.validity_checks["1219"].AT);
+      // console.log(data);
     });
 };
 
