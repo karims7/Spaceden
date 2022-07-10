@@ -51,10 +51,10 @@ const shelterSchema = new Schema({
       },
     },
   },
-  position: {
-    type: String,
-    required: false,
-  },
+  // position: {
+  //   type: String,
+  //   required: false,
+  // },
   // landerId: {
   //   type: Schema.Types.ObjectId,
   //   required: true,

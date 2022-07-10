@@ -12,7 +12,7 @@ exports.getSchedule = (req, res, next) => {
   Shelter.find({ landerId: req.lander._id })
     .then((shelters) => {
       // send all of the shelters to the template
-      console.log(shelters);
+      // console.log(shelters);
       res.render("schedule/booking", {
         pageTitle: "Booking",
         landerName: req.lander.name,
@@ -89,8 +89,8 @@ exports.postShelter = (req, res, next) => {
         sat: available.sat,
       },
     },
-    position: position,
-    landerId: landerId,
+    // position: position,
+    // landerId: landerId,
   });
 
   newShelter.save();
@@ -131,13 +131,18 @@ exports.postAppointment = (req, res, next) => {
     phone: req.body.phone,
   };
 
+  const schedule = new Schedule(appointment);
+  console.log(schedule);
+
   // get the schedule model and save the appointment to the list of appointments
   Schedule.findOne({ shelterId: req.body.shelter })
     .then((schedule) => {
       if (!schedule) {
         console.log("No matching schedule found");
-        return;
       }
+      schedule.save((err) => {
+        res.redirect("/schedule");
+      });
       return schedule.addAppointment(appointment);
     })
     .catch((err) => {

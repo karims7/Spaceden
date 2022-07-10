@@ -7,35 +7,29 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const scheduleSchema = new Schema({
-  schedule: {
-    appointments: [
-      {
-        dayTime: {
-          type: Date,
-          required: true,
-        },
-        duration: {
-          type: Number,
-          required: true,
-        },
-        name: {
-          type: String,
-          required: true,
-        },
-        reason: {
-          type: String,
-          required: true,
-        },
-        phone: {
-          type: String,
-          required: true,
-        },
-      },
-    ],
+  dayTime: {
+    type: Date,
+    required: true,
+  },
+  duration: {
+    type: Number,
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  reason: {
+    type: String,
+    required: true,
+  },
+  phone: {
+    type: String,
+    required: true,
   },
   shelterId: {
     type: Schema.Types.ObjectId,
-    required: true,
+    // required: true,
   },
 });
 

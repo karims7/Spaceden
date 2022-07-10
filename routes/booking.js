@@ -19,7 +19,7 @@ router.get("/shelter", schCtrl.getShelter);
 router.post("/shelter", schCtrl.postShelter);
 
 // /schedule/add-appointment => POST
-router.post("/add-appointment", schCtrl.postAppointment);
+router.post("/", schCtrl.postAppointment);
 
 router.get("/load/:shelterId/:date", schCtrl.getScheduleData);
 

@@ -70,11 +70,11 @@ exports.postRegister = (req, res, next) => {
   const landerId = req.body.landerId;
   const pass = req.body.password;
   const confirmPass = req.body.confirmPassword;
-  // const landerPosition: req.body.landerPosition;
+  const landerPosition = req.body.landerPosition;
 
   // create a new lander account only if the passwords match
   if (pass !== confirmPass) {
-    console.log("Unable to create account.");
+    console.log("Passwords don't match.");
     return res.redirect("/register");
   }
 
@@ -87,6 +87,7 @@ exports.postRegister = (req, res, next) => {
         name: landerName,
         landerId: landerId,
         password: result,
+        landerPosition: landerPosition,
       });
       return lander.save();
     })

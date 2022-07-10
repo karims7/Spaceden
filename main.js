@@ -122,13 +122,13 @@ mongoose
 //   console.log("Wind speed ", this.getLatestSol().HWS.av);
 // });
 
-const getWeather = () => {
-  fetch(API_URL)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data.validity_checks["1219"].AT);
-      // console.log(data);
-    });
-};
+// const getWeather = () => {
+//   fetch(API_URL)
+//     .then((res) => res.json())
+//     .then((data) => {
+//       console.log(data.validity_checks["1219"].AT);
+//       // console.log(data);
+//     });
+// };
 
-getWeather();
+// getWeather();

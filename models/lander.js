@@ -19,10 +19,10 @@ const landerSchema = new Schema({
     type: String,
     required: true,
   },
-  // landerPosition: {
-  //   type: String,
-  //   required: true,
-  // },
+  landerPosition: {
+    type: String,
+    required: true,
+  },
   //   tokens for reseting passwords
   resetToken: String,
   resetTokenExpire: Date,
