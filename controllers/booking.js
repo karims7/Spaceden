@@ -9,6 +9,7 @@ const Schedule = require("../models/booking");
 // /schedule => GET
 exports.getSchedule = (req, res, next) => {
   // get all shelters for this lander
+
   Shelter.find({ landerId: req.lander._id })
     .then((shelters) => {
       // send all of the shelters to the template
@@ -135,22 +136,39 @@ exports.postAppointment = (req, res, next) => {
   console.log(schedule);
 
   // get the schedule model and save the appointment to the list of appointments
-  Schedule.findOne({ shelterId: req.body.shelter })
-    .then((schedule) => {
-      if (!schedule) {
-        console.log("No matching schedule found");
-      }
-      schedule.save((err) => {
-        res.redirect("/schedule");
-      });
-      return schedule.addAppointment(appointment);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
 
-  res.redirect("/schedule");
+  Schedule.findOne({ shelterId: req.body.shelter }, function (err, id) {
+    if (id == null) {
+      console.log("id not exist");
+    }
+    schedule.save(function (err) {
+      res.redirect("/schedule");
+    });
+  });
+
+  // Schedule.findOne({ shelterId: req.body.shelter})
+  //   .then((abc) => {
+  //     if (!abc) {
+  //       console.log("No matching schedule found");
+  //     }
+  //     schedule.save((err) => {
+  //       res.redirect("/schedule");
+  //     });
+  //     return abc.addAppointment(appointment);
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
+
+  // res.redirect("/schedule");
 };
+
+//hint for getting detail of a booking
+function getBookingDetail(req, res) {
+  //Schedule.findOne({_id:req.params._id},function(
+  //in ejs file, for the button, put <a href="/schedule/<%= ..._id>"
+  //create a routes for that
+}
 
 // Respond with JSON object containing schedule for the day.
 exports.getScheduleData = (req, res, next) => {
