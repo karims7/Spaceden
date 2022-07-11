@@ -21,7 +21,11 @@ router.post("/shelter", schCtrl.postShelter);
 // /schedule/add-appointment => POST
 router.post("/", schCtrl.postAppointment);
 
-// router.get("/bookings", schCtrl.getBookings);
+// router.get("/", (req, res) => {
+//   res.render("schedule/booking");
+// });
+
+// router.get("/bookings", schCtrl.getSchedule);
 
 router.get("/load/:shelterId/:date", schCtrl.getScheduleData);
 

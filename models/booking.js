@@ -27,10 +27,10 @@ const scheduleSchema = new Schema({
     type: String,
     required: true,
   },
-  shelterId: {
-    type: Schema.Types.ObjectId,
-    required: true,
-  },
+  // shelterId: {
+  //   type: Schema.Types.ObjectId,
+  //   required: true,
+  // },
   // landerId: {
   //   type: String,
   //   required: true,

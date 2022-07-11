@@ -113,22 +113,3 @@ mongoose
 // };
 
 // getWeather();
-
-// let marsweather = new MarsInsightWeather("C", "bar", "km/h");
-
-// marsweather.request(function (err, response) {
-//   console.log("Temperature ", this.getLatestSol().AT.av);
-//   console.log("Pressure ", this.getLatestSol().PRE.av);
-//   console.log("Wind speed ", this.getLatestSol().HWS.av);
-// });
-
-// const getWeather = () => {
-//   fetch(API_URL)
-//     .then((res) => res.json())
-//     .then((data) => {
-//       console.log(data.validity_checks["1219"].AT);
-//       // console.log(data);
-//     });
-// };
-
-// getWeather();

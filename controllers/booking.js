@@ -268,6 +268,18 @@ exports.deleteAppointment = (req, res, next) => {
     });
 };
 
-// exports.getBookings = (req, res) => {
-//   req.body.landerId
-// }
+// exports.getSchedule = (req, res) => {
+//   Schedule.find({})
+//     .then((result) => {
+//       if (!result) {
+//         res.send("Result isn't found");
+//       } else {
+//         res.json(result);
+//       }
+//     })
+//     .catch((err) => {
+//       console.log(err);
+
+//       res.redirect("/schedule");
+//     });
+// };

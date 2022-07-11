@@ -19,6 +19,9 @@ const shelterSchema = new Schema({
     type: String,
     required: true,
   },
+  // shelterId: {
+  //   type: String,
+  // },
   availability: {
     days: {
       sun: {
