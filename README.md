@@ -13,9 +13,9 @@ In winter, temperatures can get down to minus 125 degrees C. A summer day on Mar
 
 ![dust storm](./images/5.jpg)
 
-![spaceden](./images/7.jpg)
+![spaceden](./images/7.jpeg)
 
-![spaceden](./images/8.jpg)
+![spaceden](./images/8.jpeg)
 
 ![screenshot 1](./images/1.jpg)
 
