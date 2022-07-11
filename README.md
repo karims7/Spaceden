@@ -30,3 +30,4 @@ In winter, temperatures can get down to minus 125 degrees C. A summer day on Mar
 - Better UI
 - Visual content of shelters
 - About, contact us pages
+- Better Voice Assistance (CRUD operations, navigations etc.)
