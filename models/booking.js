@@ -27,6 +27,12 @@ const scheduleSchema = new Schema({
     type: String,
     required: true,
   },
+  appointments: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
   // shelterId: {
   //   type: Schema.Types.ObjectId,
   //   required: true,

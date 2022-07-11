@@ -192,13 +192,13 @@ exports.getScheduleData = (req, res, next) => {
       // if no schedule was found
       if (!sch) {
         console.log("1. No schedule found");
-        // res.status(404).send("1.5 No schedule found");
+        return res.status(404).send("1.5 No schedule found");
+      } else {
+        // use the filter method to sort through the appointments
+        const filteredApnt = sch.appointments.filter(
+          (apt) => apt.dayTime.toLocaleDateString() === dateString
+        );
       }
-
-      // use the filter method to sort through the appointments
-      const filteredApnt = sch.schedule.appointments.filter(
-        (apt) => apt.dayTime.toLocaleDateString() === dateString
-      );
 
       res
         .status(200)
