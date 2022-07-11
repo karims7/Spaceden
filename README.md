@@ -11,11 +11,13 @@ In winter, temperatures can get down to minus 125 degrees C. A summer day on Mar
 
 ![dust storms](https://scx2.b-cdn.net/gfx/news/2019/duststormson.jpg)
 
-![dust storms](https://scx2.b-cdn.net/gfx/news/2019/duststormson.jpg)
+![dust storm](./images/5.jpg)
 
-![dust storms](./images/6.gif)
+![spaceden](./images/7.jpg)
 
-![dust storms](./images/5.jpg)
+![spaceden](./images/8.jpg)
+
+![screenshot 1](./images/1.jpg)
 
 ![screenshot 1](./images/2.jpg)
 
@@ -27,3 +29,4 @@ In winter, temperatures can get down to minus 125 degrees C. A summer day on Mar
 - Mars Map
 - Better UI
 - Visual content of shelters
+- About, contact us pages
