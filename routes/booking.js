@@ -21,6 +21,8 @@ router.post("/shelter", schCtrl.postShelter);
 // /schedule/add-appointment => POST
 router.post("/", schCtrl.postAppointment);
 
+// router.get("/bookings", schCtrl.getBookings);
+
 router.get("/load/:shelterId/:date", schCtrl.getScheduleData);
 
 router.post("/delete/:shelterId/:schId", schCtrl.deleteAppointment);

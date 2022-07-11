@@ -10,6 +10,7 @@ const Schedule = require("../models/booking");
 exports.getSchedule = (req, res, next) => {
   // get all shelters for this lander
 
+  //get sched
   Shelter.find({ landerId: req.lander._id })
     .then((shelters) => {
       // send all of the shelters to the template
@@ -110,19 +111,19 @@ exports.postShelter = (req, res, next) => {
 // /schedule/add-appointment => POST
 exports.postAppointment = (req, res, next) => {
   // get the appointment data from the body
-
+  console.log("1");
   // format a date object
   const day = req.body.day;
   const time = req.body.start;
   const dateTime = new Date();
-
+  console.log(" 2");
   dateTime.setFullYear(day.split("-")[0]);
   dateTime.setMonth(day.split("-")[1] - 1);
   dateTime.setDate(day.split("-")[2]);
 
   dateTime.setHours(time.split(":")[0]);
   dateTime.setMinutes(time.split(":")[1]);
-
+  console.log(" 3");
   // get the remaining form data
   const appointment = {
     dayTime: dateTime,
@@ -130,22 +131,25 @@ exports.postAppointment = (req, res, next) => {
     name: req.body.name,
     reason: req.body.reason,
     phone: req.body.phone,
+    shelterId: req.body.shelterId,
   };
-
+  console.log(" 4");
   const schedule = new Schedule(appointment);
   console.log(schedule);
 
   // get the schedule model and save the appointment to the list of appointments
-
-  Schedule.findOne({ shelterId: req.body.shelter }, function (err, id) {
+  console.log(" 6");
+  Schedule.findOne({ shelterId: req.body.shelter }).then(function (id) {
+    console.log(" 8");
     if (id == null) {
       console.log("id not exist");
     }
     schedule.save(function (err) {
+      console.log(" 9");
       res.redirect("/schedule");
     });
   });
-
+  console.log(" 7");
   // Schedule.findOne({ shelterId: req.body.shelter})
   //   .then((abc) => {
   //     if (!abc) {
@@ -164,11 +168,18 @@ exports.postAppointment = (req, res, next) => {
 };
 
 //hint for getting detail of a booking
-function getBookingDetail(req, res) {
-  //Schedule.findOne({_id:req.params._id},function(
-  //in ejs file, for the button, put <a href="/schedule/<%= ..._id>"
-  //create a routes for that
-}
+// function getBookingDetail(req, res) {
+//   //Schedule.findOne({_id:req.params._id},function(
+//   //in ejs file, for the button, put <a href="/schedule/<%= ..._id>"
+//   //create a routes for that
+//   Schedule.findOne({_id:req.params._id}, () => {
+
+//   })
+// }
+// {
+/* <shelter name...</shelter>>
+<a href="..."><button>detail</button></a> */
+// }
 
 // Respond with JSON object containing schedule for the day.
 exports.getScheduleData = (req, res, next) => {
@@ -180,8 +191,8 @@ exports.getScheduleData = (req, res, next) => {
     .then((sch) => {
       // if no schedule was found
       if (!sch) {
-        console.log("No schedule found");
-        return;
+        console.log("1. No schedule found");
+        // res.status(404).send("1.5 No schedule found");
       }
 
       // use the filter method to sort through the appointments
@@ -242,7 +253,7 @@ exports.deleteAppointment = (req, res, next) => {
     .then((schedule) => {
       // if no schedule was found...
       if (!schedule) {
-        console.log("no schedule found.");
+        console.log("2. no schedule found.");
         return res.redirect("/schedule");
       }
       return schedule.removeAppointment(schId);
@@ -256,3 +267,7 @@ exports.deleteAppointment = (req, res, next) => {
       res.redirect("/schedule");
     });
 };
+
+// exports.getBookings = (req, res) => {
+//   req.body.landerId
+// }

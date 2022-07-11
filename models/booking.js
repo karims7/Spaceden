@@ -29,8 +29,12 @@ const scheduleSchema = new Schema({
   },
   shelterId: {
     type: Schema.Types.ObjectId,
-    // required: true,
+    required: true,
   },
+  // landerId: {
+  //   type: String,
+  //   required: true,
+  // },
 });
 
 // add booking method

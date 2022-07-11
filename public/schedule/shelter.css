@@ -1,6 +1,9 @@
 body #day-shelter-view {
   display: block;
 }
+body {
+  color: white;
+}
 
 body #day-shelter-view .shelter-container {
   max-width: 100%;
